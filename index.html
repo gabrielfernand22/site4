@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Notícia Online - Portal Regional</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <!-- Barra Superior -->
+    <div class="top-bar">
+        <div class="container">
+            <span id="current-date"><i class="fa-regular fa-calendar"></i> Carregando data...</span>
+            <div class="social-links">
+                <span>Siga-nos:</span>
+                <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cabeçalho Principal -->
+    <header class="main-header">
+        <div class="container header-content">
+            <a href="#" class="logo" onclick="selecionarCategoria('todas', event)">
+                <div class="logo-icon">AN</div>
+                <div class="logo-text">
+                    <h1>A NOTÍCIA ONLINE</h1>
+                    <span>Informação com credibilidade</span>
+                </div>
+            </a>
+
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Buscar notícias no portal...">
+                <button type="button" onclick="aplicarFiltros()"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu de Navegação Funcional -->
+    <nav class="navbar">
+        <div class="container">
+            <ul class="nav-list" id="navMenu">
+                <li><a href="#" class="active" data-cat="todas" onclick="selecionarCategoria('todas', event)">Início</a></li>
+                <li><a href="#" data-cat="regiao" onclick="selecionarCategoria('regiao', event)">Muriaé & Região</a></li>
+                <li><a href="#" data-cat="policia" onclick="selecionarCategoria('policia', event)">Polícia</a></li>
+                <li><a href="#" data-cat="economia" onclick="selecionarCategoria('economia', event)">Economia</a></li>
+                <li><a href="#" data-cat="educacao" onclick="selecionarCategoria('educacao', event)">Educação</a></li>
+                <li><a href="#" data-cat="esportes" onclick="selecionarCategoria('esportes', event)">Esportes</a></li>
+                <li><a href="#" data-cat="eventos" onclick="selecionarCategoria('eventos', event)">Eventos</a></li>
+                <li><a href="#" data-cat="contato" onclick="selecionarCategoria('contato', event)">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Faixa Plantão Urgente -->
+        <div class="breaking-bar">
+            <div class="breaking-label">
+                <i class="fa-solid fa-bolt"></i> Plantão
+            </div>
+            <div class="breaking-text">
+                Prefeitura anuncia novo cronograma de obras e melhorias na infraestrutura urbana nesta semana.
+            </div>
+        </div>
+
+        <!-- Seção de Destaques Principais (Exibida na aba Início) -->
+        <section class="hero-section" id="heroSection">
+            <div class="hero-grid">
+                
+                <!-- Notícia Principal -->
+                <article class="news-card featured-main" onclick="abrirMateria('Luz Maria Store celebra um ano de sucesso e conquistas em Muriaé', 'Comércio Local', 'A loja comemorou seu primeiro aniversário com clientes, amigos e novidades exclusivas para o comércio de Muriaé e região.')">
+                    <div class="card-link">
+                        <img src="https://anoticiaonline.com.br/site/wp-content/uploads/2026/11/WhatsApp-Image-2026-11-16-at-11.50.11-2.webp" alt="Luz Maria Store">
+                        <div class="card-overlay">
+                            <span class="category-tag">Comércio Local</span>
+                            <h2 class="card-title main-title">
+                                Luz Maria Store celebra um ano de sucesso e conquistas em Muriaé
+                            </h2>
+                            <div class="card-meta">
+                                <span><i class="fa-regular fa-clock"></i> Há 2 horas</span>
+                                <span><i class="fa-regular fa-user"></i> Redação</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Notícia Secundária 1 -->
+                <article class="news-card featured-sub" onclick="abrirMateria('Atuação Jovem forma 37 jovens e apresenta projetos de inovação em Minas Gerais', 'Educação & Inovação', 'O programa capacitou jovens estudantes com foco em empreendedorismo, tecnologia e desenvolvimento regional em Minas Gerais.')">
+                    <div class="card-link">
+                        <img src="https://anoticiaonline.com.br/site/wp-content/uploads/2026/11/media_coop_filer_public_thumbnails_filer_public_2026_11_09_atuacao_jovem_26mg_1-d647b.jpg__1366x968_subsampling-2-copiar.webp" alt="Atuação Jovem">
+                        <div class="card-overlay">
+                            <span class="category-tag green">Educação & Inovação</span>
+                            <h3 class="card-title sub-title">
+                                Atuação Jovem forma 37 jovens e apresenta projetos de inovação em Minas Gerais
+                            </h3>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Notícia Secundária 2 -->
+                <article class="news-card featured-sub" onclick="abrirMateria('Campanha de negociação da Energisa oferece descontos de até 98% e condições especiais', 'Economia & Utilidade', 'Consumidores com faturas em atraso podem parcelar débitos e obter abatimentos significativos durante o mutirão da concessionária.')">
+                    <div class="card-link">
+                        <img src="https://anoticiaonline.com.br/site/wp-content/uploads/2026/11/Campanha-Negociacao-2026-copiar.webp" alt="Campanha Energisa">
+                        <div class="card-overlay">
+                            <span class="category-tag orange">Utilidade Pública</span>
+                            <h3 class="card-title sub-title">
+                                Campanha de negociação da Energisa oferece descontos de até 98% e condições especiais
+                            </h3>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Barra Divisória Dinâmica -->
+        <div class="section-divider" id="sectionDivider">
+            <div class="divider-badge">
+                <span id="sectionTitle">ÚLTIMAS NOTÍCIAS</span>
+            </div>
+            <div class="divider-line"></div>
+        </div>
+
+        <!-- Seção de Contato (Oculta por padrão, aparece ao clicar em Contato) -->
+        <section class="contact-section hidden" id="contactSection">
+            <div class="contact-card">
+                <h2><i class="fa-regular fa-envelope"></i> Fale com a Redação</h2>
+                <p>Envie sua sugestão de pauta, denúncia, nota de evento ou solicitação comercial.</p>
+                <form id="contactForm" onsubmit="enviarContato(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Seu Nome</label>
+                            <input type="text" required placeholder="Digite seu nome completo">
+                        </div>
+                        <div class="form-group">
+                            <label>E-mail ou WhatsApp</label>
+                            <input type="text" required placeholder="(32) 99999-9999">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Assunto</label>
+                        <select>
+                            <option>Sugestão de Pauta / Notícia</option>
+                            <option>Anunciar no Portal</option>
+                            <option>Correção ou Direito de Resposta</option>
+                            <option>Outros Assuntos</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Mensagem</label>
+                        <textarea rows="5" required placeholder="Escreva os detalhes aqui..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Enviar Mensagem</button>
+                </form>
+                <div id="contactFeedback" class="feedback-msg hidden">
+                    <i class="fa-solid fa-circle-check"></i> Mensagem enviada com sucesso! Nossa equipe entrará em contato.
+                </div>
+            </div>
+        </section>
+
+        <!-- Grade Inferior: Feed de Notícias + Barra Lateral -->
+        <div class="content-layout" id="newsContentLayout">
+            
+            <!-- Coluna da Esquerda: Lista de Notícias por Categoria -->
+            <section class="news-feed" id="newsFeed">
+                
+                <!-- MURIAÉ & REGIÃO -->
+                <article class="feed-item searchable" data-category="regiao" onclick="abrirMateria('Campanha de vacinação amplia horários de atendimento nas unidades básicas de Muriaé', 'Muriaé & Região', 'A Secretaria Municipal de Saúde estendeu o horário de funcionamento das salas de vacina para atender trabalhadores que não conseguem comparecer em horário comercial.')">
+                    <div class="feed-thumb">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO7yVWcQsMjgQ1wTenutGerPA84HTJHlIOe7WI2Go5S9VAxABDawUTxW4&s=10" alt="Saúde">
+                    </div>
+                    <div class="feed-body">
+                        <div>
+                            <div class="feed-cat">Muriaé & Região</div>
+                            <h3 class="feed-title">Campanha de vacinação amplia horários de atendimento nas unidades básicas de Muriaé</h3>
+                            <p class="feed-excerpt">Objetivo é facilitar o acesso de trabalhadores e estudantes durante o período noturno e aos sábados.</p>
+                        </div>
+                        <div class="feed-date"><i class="fa-regular fa-clock"></i> Publicado hoje às 14:10</div>
+                    </div>
+                </article>
+
+                <!-- POLÍCIA -->
+                <article class="feed-item searchable" data-category="policia" onclick="abrirMateria('Operação conjunta das forças de segurança reforça patrulhamento nos bairros e rodovias da região', 'Polícia', 'Ação preventiva conta com bloqueios estratégicos, fiscalização de trânsito e monitoramento integrado para aumentar a segurança da população.')">
+                    <div class="feed-thumb">
+                        <img src="https://image.portaldacidade.com/unsafe/https://bucket.portaldacidade.com/umuarama.portaldacidade.com/img/news/2026-09/operacao-seguranca-rural-integrada-reforca-o-policiamento-no-campo-em-quatro-municipios-6aa284b254a8a.jpeg" alt="Polícia">
+                    </div>
+                    <div class="feed-body">
+                        <div>
+                            <div class="feed-cat cat-policia">Polícia</div>
+                            <h3 class="feed-title">Operação conjunta das forças de segurança reforça patrulhamento nos bairros e rodovias</h3>
+                            <p class="feed-excerpt">Ação preventiva realiza blitz educativas e fiscalização intensificada nos principais acessos da cidade.</p>
+                        </div>
+                        <div class="feed-date"><i class="fa-regular fa-clock"></i> Publicado hoje às 13:25</div>
+                    </div>
+                </article>
+
+                <article class="feed-item searchable" data-category="policia" onclick="abrirMateria('Polícia Rodoviária alerta motoristas sobre trechos com neblina e obras na BR-116', 'Polícia', 'Equipes orientam os condutores a reduzirem a velocidade e manterem distância segura em pontos de pare-e-siga.')">
+                    <div class="feed-thumb">
+                        <img src="https://estradas.com.br/wp-content/uploads/2019/06/Campanha_Rodovia_BR_116_Neblina_Dutra.jpg" alt="Rodovia">
+                    </div>
+                    <div class="feed-body">
+                        <div>
+                            <div class="feed-cat cat-policia">Polícia</div>
+                            <h3 class="feed-title">Polícia Rodoviária alerta motoristas sobre trechos com obras e fiscalização na BR-116</h3>
+                            <p class="feed-excerpt">Equipes orientam condutores a redobrarem a atenção nos pontos em sistema de pare-e-siga.</p>
+                        </div>
+                        <div class="feed-date"><i class="fa-regular fa-clock"></i> Publicado hoje às 10:15</div>
+                    </div>
+                </article>
+
+                <!-- ECONOMIA -->
+                <article class="feed-item searchable" data-category="economia" onclick="abrirMateria('Comércio de Muriaé projeta alta nas vendas e prepara horário especial para o fim de ano', 'Economia', 'Lojistas apostam em promoções, crediário facilitado e geração de vagas temporárias para impulsionar a economia local.')">
+                    <div class="feed-thumb">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFmVJSPwPgh0ZBGsvlMystHeBUQ7sAGz0FVo4vmLbqcw&s=10" alt="Economia">
+                    </div>
+                    <div class="feed-body">
+                        <div>
+                            <div class="feed-cat cat-economia">Economia</div>
+                            <h3 class="feed-title">Comércio local projeta crescimento nas vendas e anuncia abertura de vagas temporárias</h3>
+                            <p class="feed-excerpt">Setores de vestuário, calçados e serviços lideram as contratações neste trimestre na Zona da Mata.</p>
+                        </div>
+                        <div class="feed-date"><i class="fa-regular fa-clock"></i> Publicado hoje às 11:45</div>
+                    </div>
+                </article>
+
+                <!-- EDUCAÇÃO -->
+                <article class="feed-item searchable" data-category="educacao" onclick="abrirMateria('Instituições técnicas abrem inscrições gratuitas para cursos de capacitação profissional', 'Educação', 'As oportunidades contemplam áreas de administração, informática, logística e atendimento ao cliente.')">
+                    <div class="feed-thumb">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM5_mHxKCPETYOOmP6kTqxS33JWg13mqUYN9r3RkQbaw&s=10" alt="Educação">
+                    </div>
+                    <div class="feed-body">
+                        <div>
+                            <div class="feed-cat cat-educacao">Educação</div>
+                            <h3 class="feed-title">Escolas técnicas abrem inscrições gratuitas para cursos de qualificação profissional</h3>
+                            <p class="feed-excerpt">Vagas são destinadas a jovens e adultos que buscam inserção rápida no mercado de trabalho.</p>
+                        </div>
+                        <div class="feed-date"><i class="fa-regular fa-clock"></i> Publicado ontem às 19:00</div>
+                    </div>
+                </article>
+
+                <!-- ESPORTES -->
+                <article class="feed-item searchable" data-category="esportes" onclick="abrirMateria('Campeonato regional de futebol amador define semifinalistas neste domingo', 'Esportes', 'As partidas decisivas acontecerão nos estádios locais com entrada franca para os torcedores.')">
+                    <div class="feed-thumb">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPt5YUHpukXlWCYpXpYmDj484g3Sp5ZhQM-n7mo3YyJQ&s" alt="Esportes">
+                    </div>
+                    <div class="feed-body">
+                        <div>
+                            <div class="feed-cat cat-esportes">Esportes</div>
+                            <h3 class="feed-title">Campeonato regional de futebol amador define os semifinalistas neste fim de semana</h3>
+                            <p class="feed-excerpt">Partidas decisivas prometem arquibancadas cheias e homenagens aos atletas da região.</p>
+                        </div>
+                        <div class="feed-date"><i class="fa-regular fa-clock"></i> Publicado ontem às 17:40</div>
+                    </div>
+                </article>
+
+                <!-- EVENTOS -->
+                <article class="feed-item searchable" data-category="eventos" onclick="abrirMateria('Festival gastronômico e cultural reúne artistas locais na praça central', 'Eventos', 'O evento contará com praça de alimentação, feira de artesanato e apresentações musicais gratuitas durante todo o fim de semana.')">
+                    <div class="feed-thumb">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9a6IMsu3aTKUaYEB6SoeJj8GCLtNf1yEDmD2SYCzo7xgnsDT76hgdHbY&s=10" alt="Eventos">
+                    </div>
+                    <div class="feed-body">
+                        <div>
+                            <div class="feed-cat cat-eventos">Eventos</div>
+                            <h3 class="feed-title">Festival gastronômico e cultural reúne artistas locais neste fim de semana na praça central</h3>
+                            <p class="feed-excerpt">Programação gratuita contará com shows ao vivo, feira de artesanato e espaço dedicado às crianças.</p>
+                        </div>
+                        <div class="feed-date"><i class="fa-regular fa-clock"></i> Publicado ontem às 16:20</div>
+                    </div>
+                </article>
+
+                <!-- Mensagem caso a busca não encontre nada -->
+                <div id="noResults" class="no-results hidden">
+                    Nenhuma notícia encontrada para esta busca ou categoria.
+                </div>
+
+            </section>
+
+            <!-- Coluna da Direita: Sidebar -->
+            <aside class="sidebar">
+                
+                <!-- Widget Previsão do Tempo -->
+                <div class="widget">
+                    <h4 class="widget-title"><i class="fa-solid fa-cloud-sun"></i> Clima Agora</h4>
+                    <div class="weather-box">
+                        <div>
+                            <strong>Muriaé, MG</strong>
+                            <p class="weather-desc">Parcialmente nublado</p>
+                        </div>
+                        <div class="weather-temp">28°C</div>
+                    </div>
+                </div>
+
+                <!-- Widget Mais Lidas -->
+                <div class="widget">
+                    <h4 class="widget-title"><i class="fa-solid fa-fire"></i> Mais Lidas</h4>
+                    <ul class="most-read-list">
+                        <li class="most-read-item">
+                            <span class="rank-number">1</span>
+                            <a href="#" onclick="abrirMateria('Luz Maria Store celebra um ano de sucesso e conquistas em Muriaé', 'Comércio Local', 'A loja comemorou seu primeiro aniversário com clientes, amigos e novidades exclusivas.'); return false;">Luz Maria Store celebra um ano de sucesso e conquistas em Muriaé</a>
+                        </li>
+                        <li class="most-read-item">
+                            <span class="rank-number">2</span>
+                            <a href="#" onclick="abrirMateria('Campanha de negociação da Energisa oferece descontos de até 98%', 'Economia', 'Consumidores podem parcelar débitos com condições especiais.'); return false;">Campanha de negociação da Energisa oferece descontos de até 98%</a>
+                        </li>
+                        <li class="most-read-item">
+                            <span class="rank-number">3</span>
+                            <a href="#" onclick="abrirMateria('Operação conjunta reforça patrulhamento nos bairros e rodovias', 'Polícia', 'Forças de segurança atuam de forma integrada na prevenção de ocorrências.'); return false;">Operação conjunta reforça patrulhamento nos bairros e rodovias</a>
+                        </li>
+                        <li class="most-read-item">
+                            <span class="rank-number">4</span>
+                            <a href="#" onclick="abrirMateria('Atuação Jovem forma 37 jovens e apresenta projetos de inovação', 'Educação', 'Programa capacitou estudantes com foco em inovação e tecnologia.'); return false;">Atuação Jovem forma 37 jovens e apresenta projetos de inovação</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- Modal para Leitura da Notícia -->
+    <div id="newsModal" class="modal-backdrop hidden" onclick="fecharModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="fecharModal()"><i class="fa-solid fa-xmark"></i></button>
+            <span id="modalCategory" class="category-tag">Categoria</span>
+            <h2 id="modalTitle">Título da Notícia</h2>
+            <p class="modal-meta"><i class="fa-regular fa-clock"></i> Atualizado hoje • Redação A Notícia Online</p>
+            <hr>
+            <p id="modalBody" class="modal-text">Texto completo da matéria...</p>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>A Notícia Online</h4>
+                    <p>Cobertura jornalística diária com foco nos principais acontecimentos de Muriaé, Zona da Mata Mineira e todo o Brasil.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Editorias</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="selecionarCategoria('regiao', event)">Muriaé & Região</a></li>
+                        <li><a href="#" onclick="selecionarCategoria('policia', event)">Polícia e Segurança</a></li>
+                        <li><a href="#" onclick="selecionarCategoria('economia', event)">Economia e Negócios</a></li>
+                        <li><a href="#" onclick="selecionarCategoria('esportes', event)">Esportes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Institucional</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="selecionarCategoria('todas', event)">Página Inicial</a></li>
+                        <li><a href="#" onclick="selecionarCategoria('eventos', event)">Agenda de Eventos</a></li>
+                        <li><a href="#" onclick="selecionarCategoria('contato', event)">Anuncie Conosco</a></li>
+                        <li><a href="#" onclick="selecionarCategoria('contato', event)">Fale com a Redação</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 A Notícia Online - Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let categoriaAtual = 'todas';
+
+        // Data atual
+        const dateElement = document.getElementById('current-date');
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const today = new Date().toLocaleDateString('pt-BR', options);
+        dateElement.innerHTML = `<i class="fa-regular fa-calendar"></i> ${today.charAt(0).toUpperCase() + today.slice(1)}`;
+
+        // Nomes amigáveis para a barra divisória
+        const nomesCategorias = {
+            'todas': 'ÚLTIMAS NOTÍCIAS',
+            'regiao': 'MURIAÉ & REGIÃO',
+            'policia': 'PLANTÃO POLICIAL',
+            'economia': 'ECONOMIA & NEGÓCIOS',
+            'educacao': 'EDUCAÇÃO & CURSOS',
+            'esportes': 'ESPORTES',
+            'eventos': 'CULTURA & EVENTOS',
+            'contato': 'CONTATO & REDAÇÃO'
+        };
+
+        // Alternar abas do menu
+        function selecionarCategoria(cat, event) {
+            if (event) event.preventDefault();
+            categoriaAtual = cat;
+
+            // Atualiza classe ativa no menu
+            document.querySelectorAll('#navMenu a').forEach(link => {
+                link.classList.toggle('active', link.getAttribute('data-cat') === cat);
+            });
+
+            // Atualiza título da faixa inclinada
+            document.getElementById('sectionTitle').innerText = nomesCategorias[cat] || 'NOTÍCIAS';
+
+            const heroSection = document.getElementById('heroSection');
+            const contactSection = document.getElementById('contactSection');
+            const newsContentLayout = document.getElementById('newsContentLayout');
+
+            if (cat === 'contato') {
+                heroSection.classList.add('hidden');
+                newsContentLayout.classList.add('hidden');
+                contactSection.classList.remove('hidden');
+                return;
+            } else {
+                contactSection.classList.add('hidden');
+                newsContentLayout.classList.remove('hidden');
+                // Mostra os destaques grandes apenas na aba Início
+                heroSection.classList.toggle('hidden', cat !== 'todas');
+            }
+
+            aplicarFiltros();
+        }
+
+        // Filtra por categoria + campo de busca
+        function aplicarFiltros() {
+            const termo = document.getElementById('searchInput').value.toLowerCase();
+            const itens = document.querySelectorAll('.feed-item');
+            let visiveis = 0;
+
+            itens.forEach(item => {
+                const catItem = item.getAttribute('data-category');
+                const textoItem = item.innerText.toLowerCase();
+
+                const bateCategoria = (categoriaAtual === 'todas' || catItem === categoriaAtual);
+                const bateBusca = textoItem.includes(termo);
+
+                if (bateCategoria && bateBusca) {
+                    item.style.display = 'flex';
+                    visiveis++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            document.getElementById('noResults').classList.toggle('hidden', visiveis > 0);
+        }
+
+        document.getElementById('searchInput').addEventListener('keyup', aplicarFiltros);
+
+        // Modal de leitura da matéria
+        function abrirMateria(titulo, categoria, texto) {
+            document.getElementById('modalTitle').innerText = titulo;
+            document.getElementById('modalCategory').innerText = categoria;
+            document.getElementById('modalBody').innerText = texto + " Acompanhe nossa cobertura completa ao longo do dia com atualizações diretas da nossa equipe de reportagem.";
+            document.getElementById('newsModal').classList.remove('hidden');
+        }
+
+        function fecharModal() {
+            document.getElementById('newsModal').classList.add('hidden');
+        }
+
+        // Envio simulado do formulário de contato
+        function enviarContato(event) {
+            event.preventDefault();
+            document.getElementById('contactForm').reset();
+            document.getElementById('contactFeedback').classList.remove('hidden');
+        }
+    </script>
+
+</body>
+</html>
